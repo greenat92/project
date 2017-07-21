@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
-import { AppRegistry, Text, View } from 'react-native';
+import { AppRegistry, TextInput, Text, View } from 'react-native';
 
-class App extends Component {
+export default class  AppPizzaTranslator extends Component {
+  constructor(props){
+    super(props);
+    this.state = {text: ""};
+  }
   render() {
     return (
-      // Try setting `alignItems` to 'flex-start'
-     // Try setting `justifyContent` to `flex-end`.
-     // Try setting `flexDirection` to `row`.
-     <View style={{
-       flex: 1,
-       flexDirection: 'row',
-       justifyContent: 'flex-end',
-       alignItems: 'flex-end',
-     }}>
-       <View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} />
-       <View style={{width: 50, height: 50, backgroundColor: 'skyblue'}} />
-       <View style={{width: 50, height: 50, backgroundColor: 'steelblue'}} />
+     <View style={{padding: 10}}>
+       <TextInput
+         style={{height: 40}}
+         placeholder='type something here'
+         onChangeText={ (text) => this.setState({text}) }
+       />
+       <Text style={{padding: 10, fontSize: 42}}>
+         {this.state.text.split(" ").map( (word) => word && '🍕').join(' ')}
+       </Text>
+
      </View>
     );
   }
@@ -23,4 +25,4 @@ class App extends Component {
 
 
 // skip this line if using Create React Native App
-AppRegistry.registerComponent('project', () => App);
+AppRegistry.registerComponent('project', () => AppPizzaTranslator);
