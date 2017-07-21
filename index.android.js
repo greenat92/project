@@ -1,26 +1,18 @@
 import React, { Component } from 'react';
 import { AppRegistry, Text, View } from 'react-native';
 
-class Greeting extends Component {
+class App extends Component {
   render() {
     return (
-      <Text>Hello {this.props.name}!</Text>
+       <View style={{flex: 2}}>
+         <View style={{flex: 1, backgroundColor: 'powderblue'}} />
+         <View style={{flex: 2, backgroundColor: 'skyblue'}} />
+         <View style={{flex: 3, backgroundColor: 'steelblue'}} />
+       </View>
     );
   }
 }
 
-export default class LotsOfGreetings extends Component {
-  render() {
-    return (
-      <View style={{alignItems: 'center'}}>
-        <Greeting name='Rexxar' />
-        <Greeting name='Jaina' />
-        <Greeting name='Valeera' />
-        <Greeting name='Lakhdar' />
-      </View>
-    );
-  }
-}
 
 // skip this line if using Create React Native App
-AppRegistry.registerComponent('project', () => LotsOfGreetings);
+AppRegistry.registerComponent('project', () => App);
