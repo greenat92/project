@@ -1,58 +1,85 @@
 import React, { Component } from 'react';
-import { AppRegistry, Alert, Button, StyleSheet, View } from 'react-native';
+import {
+  Alert,
+  AppRegistry,
+  Platform,
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  TouchableOpacity,
+  TouchableNativeFeedback,
+  TouchableWithoutFeedback,
+  View
+} from 'react-native';
 
-export default class  ButtonBasics extends Component {
+export default class  Touchables extends Component {
 
   _onPressButton(){
     Alert.alert("You taped the button!")
   }
+  _onLongPressButton(){
+    Alert.alert("you long-pressed the button!")
+  }
   render() {
     return (
+
             <View style={styles.container}>
-              <View style={styles.buttonContainer}>
-                  <Button
-                    onPress={this._onPressButton}
-                    title="Click me"
-                  />
-              </View>
-              <View style={styles.buttonContainer}>
-                <Button
-                  title="Click me"
-                  onPress={this._onPressButton}
-                  color="#841584"
-                />
-              </View>
-              <View style={styles.alternativeLayoutButtonContainer}>
-                <Button
-                  title="This looks great to me"
-                  onPress={this._onPressButton}
-                />
-                <Button
-                  title="ok to me"
-                  onPress={this._onPressButton}
-                  color="#841584"
-                />
-              </View>
+              <TouchableNativeFeedback
+                onPress={this._onPressButton}
+                background={Platform.OS === 'android' ? TouchableNativeFeedback.SelectableBackground() : ''}>
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>TouchableNativeFeedback</Text>
+                </View>
+              </TouchableNativeFeedback>
+
+              <TouchableHighlight onPress={this._onPressButton} underlayColor='white'>
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>TouchableHighlight</Text>
+                </View>
+              </TouchableHighlight>
+
+              <TouchableOpacity onPress={this._onPressButton}>
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>TouchableOpacity</Text>
+                </View>
+              </TouchableOpacity>
+
+              <TouchableWithoutFeedback
+                onPress={this._onPressButton}>
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>TouchableWithoutFeedback</Text>
+                </View>
+              </TouchableWithoutFeedback>
+
+              <TouchableHighlight
+                onPress={this._onPressButton}
+                onLongPress={this._onLongPressButton}
+                underlayColor='white'
+                >
+                <View style={styles.button}>
+                  <Text style={styles.buttonText}>Touchable with Long Press</Text>
+                </View>
+              </TouchableHighlight>
             </View>
     );
   }
 }
 
-
-// skip this line if using Create React Native App
-AppRegistry.registerComponent('project', () => ButtonBasics);
-
 const styles = StyleSheet.create({
-  container:{
-      flex: 1,
-      justifyContent: 'center'
+  container: {
+    paddingTop: 60,
+    alignItems: 'center'
   },
-  buttonContainer:{
-    margin: 20
+  button: {
+    marginBottom: 30,
+    width: 260,
+    alignItems: 'center',
+    backgroundColor: '#2196F3'
   },
-  alternativeLayoutButtonContainer:{
-    margin: 20,
-    flexDirection: 'row',
-    justifyContent: 'space-between'
+  buttonText: {
+    padding: 20,
+    color: 'white'
   }
-})
+});
+// skip this line if using Create React Native App
+AppRegistry.registerComponent('project', () => Touchables);
