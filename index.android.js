@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   Alert,
   AppRegistry,
+  Image,
   Platform,
   StyleSheet,
   Text,
@@ -137,6 +138,15 @@ export default class  Touchables extends Component {
                   <Text style={styles.buttonText}>Touchable with Long Press</Text>
                 </View>
               </TouchableHighlight>
+              <View>
+                    <View><Image source={require('./img/favicon.png')} /></View>
+                    <View><Image source={require('./img/favicon.png')} /></View>
+                    <View><Image source={require('./img/favicon.png')} /></View>
+                    <View><Image source={require('./img/favicon.png')} /></View>
+                    <View><Image source={require('./img/favicon.png')} /></View>
+                    <View><Image source={require('./img/favicon.png')} /></View>
+            </View>
+
             </View>
           </ScrollView>
     );
