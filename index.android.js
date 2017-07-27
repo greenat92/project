@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import { store } from './js/store'
 import App from './js/containers/App'
 
+
 // Pass the store into the app container
 const AppWithStore = () => (
   <Provider store={store}>

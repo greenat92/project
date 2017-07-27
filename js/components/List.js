@@ -6,7 +6,7 @@ export default class List extends Component {
 
   renderItem = (text, i) => {
       const {onPressItem} = this.props
-
+      console.log("123");
       return(
         <TouchableOpacity
           style={styles.item}
